@@ -10,8 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 0) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_21_004151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "employee_position", ["rn", "lpn", "cna"]
+  create_enum "shift_position", ["rn", "lpn", "cna"]
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name", null: false
+    t.enum "position", null: false, enum_type: "employee_position"
+    t.bigint "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_employees_on_location_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.datetime "starts_at", null: false
+    t.string "ends_at"
+    t.enum "position", null: false, enum_type: "shift_position"
+    t.bigint "location_id", null: false
+    t.bigint "assigned_employee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_employee_id"], name: "index_shifts_on_assigned_employee_id"
+    t.index ["location_id"], name: "index_shifts_on_location_id"
+  end
+
+  add_foreign_key "employees", "locations"
+  add_foreign_key "shifts", "employees", column: "assigned_employee_id"
+  add_foreign_key "shifts", "locations"
 end

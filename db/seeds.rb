@@ -7,3 +7,30 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+5.times do |i|
+  Location.find_or_create_by!(name: "Location #{i}")
+end
+
+6.times do |i|
+  pos = %w[rn lpn cna].sample
+  Employee.find_or_create_by!(
+    name: "Employee #{i}",
+    location_id: (i % Location.all.size) + 1,
+    position: pos
+  )
+end
+
+10.times do |i|
+  pos = %w[rn lpn cna].sample
+  start = Time.at(Time.now + rand * (Time.now.end_of_month.to_f - Time.now.to_f))
+  emp = Employee.all.sample
+  loc = Location.all.sample
+
+  Shift.find_or_create_by!(
+    starts_at: start,
+    position: emp.position,
+    assigned_employee_id: emp.id,
+    location: loc
+  )
+end

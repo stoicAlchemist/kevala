@@ -29,7 +29,7 @@ class EmployeesTest < ApplicationSystemTestCase
 
     select @employee.location.name, from: "Location"
     fill_in "Name", with: @employee.name
-    fill_in "Position", with: @employee.position
+    select @employee.position, from: "Position"
     click_on "Update Employee"
 
     assert_text "Employee was successfully updated"

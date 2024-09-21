@@ -17,7 +17,7 @@ class ShiftsTest < ApplicationSystemTestCase
     select @shift.assigned_employee.name, from: "Assigned employee"
     fill_in "Ends at", with: @shift.ends_at
     select @shift.location.name, from: "Location"
-    fill_in "Position", with: @shift.position
+    select @shift.position, from: "Position"
     fill_in "Starts at", with: @shift.starts_at
     click_on "Create Shift"
 
@@ -32,7 +32,7 @@ class ShiftsTest < ApplicationSystemTestCase
     select @shift.assigned_employee.name, from: "Assigned employee"
     fill_in "Ends at", with: @shift.ends_at
     select @shift.location.name, from: "Location"
-    fill_in "Position", with: @shift.position
+    select @shift.position, from: "Position"
     fill_in "Starts at", with: @shift.starts_at.to_s
     click_on "Update Shift"
 

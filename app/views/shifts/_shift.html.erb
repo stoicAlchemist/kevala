@@ -16,12 +16,12 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Location:</strong>
-    <%= shift.location_id %>
+    <%= shift.location.name %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Assigned employee:</strong>
-    <%= shift.assigned_employee_id %>
+    <%= shift.assigned_employee.name %> (<%= shift.assigned_employee.position %>)
   </p>
 
 </div>

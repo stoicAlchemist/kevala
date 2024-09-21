@@ -3,5 +3,10 @@
     <strong class="block font-medium mb-1">Name:</strong>
     <%= location.name %>
   </p>
+  <p>
+    <% location.unasigned_shifts.each do |us| %>
+      <%= link_to us.starts_at, us %>
+    <% end %>
+  </p>
 
 </div>

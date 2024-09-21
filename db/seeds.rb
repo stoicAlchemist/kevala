@@ -24,11 +24,13 @@ end
 10.times do |i|
   pos = %w[rn lpn cna].sample
   start = Time.at(Time.now + rand * (Time.now.end_of_month.to_f - Time.now.to_f))
+  end_time = Time.at(start + rand * (start.end_of_month.to_f - start.to_f))
   emp = Employee.all.sample
   loc = Location.all.sample
 
   Shift.find_or_create_by!(
     starts_at: start,
+    ends_at: end_time,
     position: emp.position,
     assigned_employee_id: emp.id,
     location: loc

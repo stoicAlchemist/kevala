@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_21_013850) do
 
   create_table "shifts", force: :cascade do |t|
     t.datetime "starts_at", null: false
-    t.string "ends_at"
+    t.datetime "ends_at", null: false
     t.enum "position", null: false, enum_type: "shift_position"
     t.bigint "location_id", null: false
     t.bigint "assigned_employee_id"

@@ -2,28 +2,28 @@
 
 one:
   starts_at: 2024-09-20 18:41:51
-  ends_at: MyString
+  ends_at: 2024-09-20 20:41:51
   position: rn
   location: one
   assigned_employee: one
 
 two:
   starts_at: 2024-09-20 18:41:51
-  ends_at: MyString
+  ends_at: 2024-09-20 20:41:51
   position: rn
   location: two
   assigned_employee: two
 
 unassigned_one:
   starts_at: 2024-09-20 18:41:51
-  ends_at: MyString
+  ends_at: 2024-09-20 20:41:51
   position: rn
   location: unassigned_shifts
   assigned_employee:
 
 unassigned_two:
   starts_at: 2024-09-20 18:41:51
-  ends_at: MyString
+  ends_at: 2024-09-20 20:41:51
   position: rn
   location: unassigned_shifts
   assigned_employee:

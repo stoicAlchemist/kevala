@@ -14,4 +14,11 @@
     <%= employee.location.name %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Upcoming Schedule:</strong>
+    <% employee.future_shifts.each do |fs|%>
+      <%= link_to fs.starts_at, fs %>: <%= link_to fs.location.name, fs.location %> <br />
+    <% end %>
+  </p>
+
 </div>

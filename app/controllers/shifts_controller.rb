@@ -12,6 +12,7 @@ class ShiftsController < ApplicationController
 
   # GET /shifts/new
   def new
+    @selected_location_id = params[:location]
     @shift = Shift.new
   end
 

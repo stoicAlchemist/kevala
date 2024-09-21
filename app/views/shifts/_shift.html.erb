@@ -21,7 +21,11 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Assigned employee:</strong>
-    <%= shift.assigned_employee&.name || "Unassigned" %> (<%= shift.assigned_employee&.position || "N/A" %>)
+    <% if shift.assigned_employee %>
+      <%= link_to shift.assigned_employee.name, shift.assigned_employee %> (<%= shift.assigned_employee.position %>)
+    <% else %>
+      N/A
+    <% end %>
   </p>
 
 </div>

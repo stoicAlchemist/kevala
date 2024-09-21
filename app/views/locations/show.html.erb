@@ -12,7 +12,7 @@
       <%= button_to "Destroy this location", @location, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <div class="inline-block ml-2">
-      <%= link_to "New shift", new_shift_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <%= link_to "New shift", new_shift_path(location: @location.id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     </div>
 
   <p class="my-5">

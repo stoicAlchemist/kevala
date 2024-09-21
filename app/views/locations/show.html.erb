@@ -15,5 +15,11 @@
       <%= link_to "New shift", new_shift_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     </div>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Assigned Shifts:</strong>
+    <% @location.assigned_shifts.order(starts_at: :desc).each do |as| %>
+      <%= render as %>
+    <% end %>
+  </p>
   </div>
 </div>

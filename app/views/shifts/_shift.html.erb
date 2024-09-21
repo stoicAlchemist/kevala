@@ -16,12 +16,12 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Location:</strong>
-    <%= shift.location.name %>
+    <%= link_to shift.location.name, shift.location %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Assigned employee:</strong>
-    <%= shift.assigned_employee.name %> (<%= shift.assigned_employee.position %>)
+    <%= shift.assigned_employee&.name || "Unassigned" %> (<%= shift.assigned_employee&.position || "N/A" %>)
   </p>
 
 </div>

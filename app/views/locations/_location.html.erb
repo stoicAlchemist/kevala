@@ -4,9 +4,10 @@
     <%= location.name %>
   </p>
   <p>
-    <% location.unasigned_shifts.each do |us| %>
+    <strong class="block font-medium mb-1">Future Unassigned Shifts:</strong>
+    <% location.future_unasigned_shifts.each do |us| %>
       <%= link_to us.starts_at, us %>
     <% end %>
+    <%= "N/A" if location.future_unasigned_shifts.empty? %>
   </p>
-
 </div>

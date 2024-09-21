@@ -14,9 +14,9 @@ class ShiftsTest < ApplicationSystemTestCase
     visit shifts_url
     click_on "New shift"
 
-    fill_in "Assigned employee", with: @shift.assigned_employee_id
+    select @shift.assigned_employee.name, from: "Assigned employee"
     fill_in "Ends at", with: @shift.ends_at
-    fill_in "Location", with: @shift.location_id
+    select @shift.location.name, from: "Location"
     fill_in "Position", with: @shift.position
     fill_in "Starts at", with: @shift.starts_at
     click_on "Create Shift"
@@ -29,9 +29,9 @@ class ShiftsTest < ApplicationSystemTestCase
     visit shift_url(@shift)
     click_on "Edit this shift", match: :first
 
-    fill_in "Assigned employee", with: @shift.assigned_employee_id
+    select @shift.assigned_employee.name, from: "Assigned employee"
     fill_in "Ends at", with: @shift.ends_at
-    fill_in "Location", with: @shift.location_id
+    select @shift.location.name, from: "Location"
     fill_in "Position", with: @shift.position
     fill_in "Starts at", with: @shift.starts_at.to_s
     click_on "Update Shift"

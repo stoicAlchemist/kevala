@@ -3,6 +3,7 @@ require "test_helper"
 class LocationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @location = locations(:one)
+    @empty_location = locations(:empty)
   end
 
   test "should get index" do
@@ -38,9 +39,17 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to location_url(@location)
   end
 
-  test "should destroy location" do
-    assert_difference("Location.count", -1) do
+  test "should not destroy a location with assigned shifts" do
+    assert_difference("Location.count", 0) do
       delete location_url(@location)
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test "should destroy an empty location" do
+    assert_difference("Location.count", -1) do
+      delete location_url(@empty_location)
     end
 
     assert_redirected_to locations_url

@@ -49,9 +49,15 @@ class EmployeesController < ApplicationController
 
   # DELETE /employees/1 or /employees/1.json
   def destroy
-    @employee.destroy!
-
     respond_to do |format|
+      unless @employee.shifts.empty?
+        @employee.shifts.each do |shift|
+          shift.assigned_employee = nil
+          shift.save
+        end
+        @employee.reload
+      end
+      @employee.destroy!
       format.html { redirect_to employees_path, status: :see_other, notice: "Employee was successfully destroyed." }
       format.json { head :no_content }
     end

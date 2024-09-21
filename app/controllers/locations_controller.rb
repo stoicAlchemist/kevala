@@ -49,11 +49,15 @@ class LocationsController < ApplicationController
 
   # DELETE /locations/1 or /locations/1.json
   def destroy
-    @location.destroy!
-
     respond_to do |format|
-      format.html { redirect_to locations_path, status: :see_other, notice: "Location was successfully destroyed." }
-      format.json { head :no_content }
+      if @location.assigned_shifts.empty?
+        @location.destroy!
+        format.html { redirect_to locations_path, status: :see_other, notice: "Location was successfully destroyed." }
+        format.json { head :no_content }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: {error: "Location has assigned shifts"}, status: :unprocessable_entity }
+      end
     end
   end
 

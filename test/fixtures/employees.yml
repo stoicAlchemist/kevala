@@ -1,11 +1,26 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  position: 
+  name: Employee one
+  position: rn
   location: one
 
 two:
-  name: MyString
-  position: 
+  name: Employee Two
+  position: lpn
   location: two
+
+rn:
+  name: Employee position rn
+  position: rn
+  location: three
+
+lpn:
+  name: Employee position lpn
+  position: lpn
+  location: three
+
+cna:
+  name: Employee position cna
+  position: cna
+  location: three

@@ -14,9 +14,9 @@ class EmployeesTest < ApplicationSystemTestCase
     visit employees_url
     click_on "New employee"
 
-    fill_in "Location", with: @employee.location_id
+    select @employee.location.name, from: "Location"
     fill_in "Name", with: @employee.name
-    fill_in "Position", with: @employee.position
+    select @employee.position, from: "Position"
     click_on "Create Employee"
 
     assert_text "Employee was successfully created"
@@ -27,7 +27,7 @@ class EmployeesTest < ApplicationSystemTestCase
     visit employee_url(@employee)
     click_on "Edit this employee", match: :first
 
-    fill_in "Location", with: @employee.location_id
+    select @employee.location.name, from: "Location"
     fill_in "Name", with: @employee.name
     fill_in "Position", with: @employee.position
     click_on "Update Employee"

@@ -56,7 +56,7 @@ class LocationsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: {error: "Location has assigned shifts"}, status: :unprocessable_entity }
+        format.json { render json: { error: "Location has assigned shifts" }, status: :unprocessable_entity }
       end
     end
   end
